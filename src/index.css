@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+/* ------------RESETS------------------ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button:focus {
+  outline: none;
+}
+
+a {
+  font-style: none;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ------------GLOBAL------------------ */
+
+:root {
+  font-size: 16px;
+  --light-gray: rgb(223, 225, 229);
+  --dark-gray: rgb(123, 125, 129);
+  --accent: rgb(0, 120, 215);
+  --accent-light: rgb(51, 163, 255);
+  --accent-dark: rgb(0, 56, 102);
+  --header: rgb(0, 0, 0);
+  --light-text: rgb(255, 255, 255);
+  --aside: rgb(54, 65, 71);
+  --aside-accent: rgb(42, 50, 55);
+  --aside-accent-light: rgb(67, 79, 86);
+  --delete: rgb(90, 21, 2);
+  --delete-light: rgb(199, 47, 5);
+}
+
+body {
+  font-family: 'Lato', 'Segoe UI', Tahoma, sans-serif;
+}
+
+/* ------------Utils-------------------------- */
+
+.button {
+  background: none;
+  border: 1px solid var(--light-gray);
+  padding: 0.1rem 0.5rem;
+  transition: 100ms;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.button:active {
+  background: var(--dark-gray);
+  color: var(--light-text);
+}
+
+/* ------------AppContainer------------------- */
+
+.main-container {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  place-items: center;
+}
+
+.app-container {
+  min-width: 400px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-gap: 1rem;
+}
+
+.title {
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+/* ------------ListController---------------- */
+
+.list-controller {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+/* ------------TaskInput--------------------- */
+
+.task-input-container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+.task-input {
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--dark-gray);
+}
+
+/* .task-input-container:hover,
+.task-input-container:active,
+.task-input-container:focus,
+.task-input-container:focus-within {
+  box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+  border: 1px solid var(--light-gray);
+  outline: none;
+} */
+
+/* ------------TaskFilter-------------------- */
+
+.task-filter-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 0.5rem;
+}
+
+/* ------------SearchInpu-------------------- */
+
+.search-input {
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--light-gray);
+}
+
+/* ------------TaskFilterSelector------------ */
+
+.task-select-container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 0.25rem;
+  align-items: center;
+}
+
+.task-select {
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--light-gray);
+}
+
+/* ------------TaskList---------------------- */
+
+.task-list {
+  min-height: 400px;
+}
+
+/* ------------TaskListItem------------------ */
+
+.task-list-item {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  grid-gap: 1rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px dotted var(--light-gray);
+}
+
+.checkbox-container {
+  border: 1px solid black;
+  border-radius: 3px;
+  width: 1rem;
+  height: 1rem;
+  z-index: 1;
+}
+
+.checkbox-checked {
+  background-color: var(--dark-gray);
+}
+.chekbox-unchecked {
+  background-color: var(--aside);
+}
+
+.task-list-checkbox {
+  opacity: 0;
+  cursor: pointer;
+  z-index: 100;
+  height: inherit;
+  width: inherit;
+}
