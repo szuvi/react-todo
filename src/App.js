@@ -1,21 +1,21 @@
-import * as React from 'react';
-import TaskList from './TaskList/TaskList';
-import ListController from './ListController/ListController';
+import * as React from "react";
+import TaskList from "./TaskList/TaskList";
+import ListController from "./ListController/ListController";
 
 function App() {
   const [taskList, setList] = React.useState([]);
-  const [nameFilter, setNameFilter] = React.useState('');
-  const [doneFilter, setDoneFilter] = React.useState('all');
+  const [nameFilter, setNameFilter] = React.useState("");
+  const [doneFilter, setDoneFilter] = React.useState("all");
 
   const filter = {
     name: nameFilter,
-    done: (function determineDoneFilter() {
+    done: (() => {
       switch (doneFilter) {
-        case 'all':
+        case "all":
           return null;
-        case 'unfinished':
+        case "unfinished":
           return false;
-        case 'finished':
+        case "finished":
           return true;
         default:
           return null;
@@ -31,8 +31,8 @@ function App() {
   function toggleDone(id) {
     const newList = taskList.reduce((acc, task) => {
       if (task.id === id) {
-        let {done} = task;
-        acc.push({...task, done: !done});
+        let { done } = task;
+        acc.push({ ...task, done: !done });
       } else {
         acc.push(task);
       }
@@ -42,24 +42,24 @@ function App() {
   }
 
   function removeTask(id) {
-    const newList = taskList.filter(task => task.id !== id);
+    const newList = taskList.filter((task) => task.id !== id);
     setList(newList);
   }
 
-  function removeAllTasks() {
-    setList([]);
-  }
+  // function removeAllTasks() {
+  //   setList([]);
+  // }
 
   return (
     <div
       className="main-container"
-      style={{display: taskList.length > 0 ? 'block' : 'grid'}}
+      style={{ display: taskList.length > 0 ? "block" : "grid" }}
     >
       <div className="app-container">
         <h1 className="title">Boring To Do List</h1>
         <ListController
           addTask={addTask}
-          removeAllTasks={removeAllTasks}
+          // removeAllTasks={removeAllTasks}
           setNameFilter={setNameFilter}
           doneFilter={doneFilter}
           setDoneFilter={setDoneFilter}

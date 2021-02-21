@@ -1,6 +1,6 @@
-import * as React from 'react';
-import TaskInput from './TaskInput/TaskInput';
-import TaskFilter from './TaskFilter/TaskFilter';
+import * as React from "react";
+import TaskInput from "./TaskInput/TaskInput";
+import TaskFilter from "./TaskFilter/TaskFilter";
 
 function ListController(props) {
   return (
