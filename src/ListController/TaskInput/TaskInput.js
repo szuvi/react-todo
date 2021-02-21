@@ -2,8 +2,8 @@ import * as React from 'react';
 import Task from './Task/Task';
 
 function TaskInput(props) {
-  const textInput = React.useRef(null);
-  React.useEffect(() => textInput.current.focus());
+  // const textInput = React.useRef(null);
+  // React.useEffect(() => textInput.current.focus());
 
   const [currTask, setCurrTask] = React.useState('');
 
@@ -21,7 +21,7 @@ function TaskInput(props) {
   return (
     <div className="task-input-container">
       <input
-        ref={textInput}
+        // ref={textInput}
         value={currTask}
         onChange={handleInputChange}
         onKeyDown={e => (e.key === 'Enter' ? handleTaskAdd() : null)}

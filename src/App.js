@@ -5,7 +5,7 @@ import ListController from './ListController/ListController';
 function App() {
   const [taskList, setList] = React.useState([]);
   const [nameFilter, setNameFilter] = React.useState('');
-  const [doneFilter, setDoneFilter] = React.useState(null);
+  const [doneFilter, setDoneFilter] = React.useState('all');
 
   const filter = {
     name: nameFilter,
