@@ -10,8 +10,10 @@ function TaskList(props) {
   }
 
   function filterByDone(done) {
-    if (filter.done !== null) return done === filter.done;
-    else return true;
+    if (filter.done !== null) {
+      return done === filter.done;
+    }
+    return true;
   }
 
   const filteredTasks = props.tasks.reduce((acc, task) => {

@@ -9,16 +9,11 @@ function TaskListItem(props) {
     props.removeTask(props.task.id);
   }
 
-  //TODO some styling on hover and transition like 0.1s
-  //TODO test if checkbox classes work
-  //TODO insert icon instead of X
-  //TODO maybe EDIT?
-
   return (
     <ul className="task-list-item">
       <div
         className={`checkbox-container ${
-          props.task.done ? 'checkbox-checked' : 'checkbox-unchecked'
+          props.task.done ? 'checkbox-checked' : ''
         }`}
       >
         <input

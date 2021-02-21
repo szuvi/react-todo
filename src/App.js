@@ -22,8 +22,6 @@ function App() {
       }
     })(),
   };
-  //TODO Clean this mess up! How to implement conditional obj properies?
-  //     I want done to show only if it is not null!
 
   function addTask(task) {
     const newList = [...taskList, task];
@@ -31,12 +29,10 @@ function App() {
   }
 
   function toggleDone(id) {
-    // Should used useReducer here? This might be inefficient
     const newList = taskList.reduce((acc, task) => {
       if (task.id === id) {
-        let {name, done, id} = task;
-        done = !done;
-        acc.push({name, done, id});
+        let {done} = task;
+        acc.push({...task, done: !done});
       } else {
         acc.push(task);
       }
@@ -54,13 +50,11 @@ function App() {
     setList([]);
   }
 
-  // for (let i = 0; i < 100; i++) {
-  //   tasks.push(new Task(`Task number ${i}`, !!Math.floor(Math.random() * 2)));
-  // }
-  // console.log(tasks);
-
   return (
-    <div className="main-container">
+    <div
+      className="main-container"
+      style={{display: taskList.length > 0 ? 'block' : 'grid'}}
+    >
       <div className="app-container">
         <h1 className="title">Boring To Do List</h1>
         <ListController

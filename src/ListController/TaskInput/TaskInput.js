@@ -2,32 +2,38 @@ import * as React from 'react';
 import Task from './Task/Task';
 
 function TaskInput(props) {
+  const textInput = React.useRef(null);
+  React.useEffect(() => textInput.current.focus());
+
   const [currTask, setCurrTask] = React.useState('');
 
   function handleInputChange(e) {
-    const input = e.target.value;
-    setCurrTask(input);
+    setCurrTask(e.target.value);
   }
 
   function handleTaskAdd() {
     if (currTask.length > 0) {
       props.addTask(new Task(currTask, false));
       setCurrTask('');
-    } else {
-      //TODO show error
     }
   }
 
   return (
     <div className="task-input-container">
       <input
+        ref={textInput}
         value={currTask}
         onChange={handleInputChange}
-        className="task-input"
+        onKeyDown={e => (e.key === 'Enter' ? handleTaskAdd() : null)}
+        className="input input-task"
         type="text"
         placeholder="Input task..."
       />
-      <button className="button button-add" onClick={handleTaskAdd}>
+      <button
+        tabIndex="-1"
+        className="button button-add"
+        onClick={handleTaskAdd}
+      >
         Add
       </button>
     </div>

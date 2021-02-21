@@ -7,7 +7,7 @@ function SearchInput(props) {
   return (
     <input
       onChange={handleChange}
-      className="search-input"
+      className="input input-search"
       type="text"
       placeholder="Filter tasks..."
     />

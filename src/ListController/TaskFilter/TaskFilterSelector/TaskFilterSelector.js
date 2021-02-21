@@ -11,7 +11,7 @@ function TaskFilterSelector(props) {
       <select
         value={props.doneFilter}
         onChange={handleSelection}
-        className="task-select"
+        className="select select-task"
         id="task-select"
       >
         <option value="">All</option>
