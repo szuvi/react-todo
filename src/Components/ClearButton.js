@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 const ClearButton = styled.button`
-  font-size: 1rem;
+  font-size: ${(props) => props.size ?? '1rem'};
   background: none;
   border: none;
   padding: 0.1rem 0.5rem;
   transition: 100ms;
   &:hover {
-    color: ${({ props }) => props.color ?? props.theme.accent};
+    ${'' /* color: ${({ props }) => props.color ?? props.theme.accent}; */}
     cursor: pointer;
     background: none;
     border: none;

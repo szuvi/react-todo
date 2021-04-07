@@ -1,8 +1,9 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 
-function SearchInput(props) {
+function SearchInput({ setNameFilter }) {
   function handleChange(e) {
-    props.setNameFilter(e.target.value);
+    setNameFilter(e.target.value);
   }
   return (
     <input
@@ -13,5 +14,9 @@ function SearchInput(props) {
     />
   );
 }
+
+SearchInput.propTypes = {
+  setNameFilter: PropTypes.func.isRequired,
+};
 
 export default SearchInput;

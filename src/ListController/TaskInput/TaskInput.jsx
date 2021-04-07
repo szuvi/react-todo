@@ -1,8 +1,9 @@
-import * as React from "react";
-import Task from "./Task/Task";
+import * as React from 'react';
+import PropTypes from 'prop-types';
+import Task from '../../Classes/Task';
 
-function TaskInput(props) {
-  const [currTask, setCurrTask] = React.useState("");
+function TaskInput({ addTask }) {
+  const [currTask, setCurrTask] = React.useState('');
 
   const textInput = React.useRef(null);
   React.useEffect(() => textInput.current.focus(), []);
@@ -13,8 +14,8 @@ function TaskInput(props) {
 
   function handleTaskAdd() {
     if (currTask.length > 0) {
-      props.addTask(new Task(currTask, false));
-      setCurrTask("");
+      addTask(new Task(currTask, false));
+      setCurrTask('');
     }
   }
 
@@ -24,12 +25,13 @@ function TaskInput(props) {
         ref={textInput}
         value={currTask}
         onChange={handleInputChange}
-        onKeyDown={(e) => (e.key === "Enter" ? handleTaskAdd() : null)}
+        onKeyDown={(e) => (e.key === 'Enter' ? handleTaskAdd() : null)}
         className="input input-task"
         type="text"
         placeholder="Input task..."
       />
       <button
+        type="button"
         tabIndex="-1"
         className="button button-add"
         onClick={handleTaskAdd}
@@ -39,5 +41,9 @@ function TaskInput(props) {
     </div>
   );
 }
+
+TaskInput.propTypes = {
+  addTask: PropTypes.func.isRequired,
+};
 
 export default TaskInput;

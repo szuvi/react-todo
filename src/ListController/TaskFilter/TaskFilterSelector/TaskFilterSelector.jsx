@@ -1,15 +1,17 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import * as React from 'react';
+import PropTypes from 'prop-types';
 
-function TaskFilterSelector(props) {
+function TaskFilterSelector({ setDoneFilter, doneFilter }) {
   function handleSelection(e) {
-    props.setDoneFilter(e.target.value);
+    setDoneFilter(e.target.value);
   }
 
   return (
     <div className="task-select-container">
       <label htmlFor="task-select">Show:</label>
       <select
-        value={props.doneFilter}
+        value={doneFilter}
         onChange={handleSelection}
         className="select select-task"
         id="task-select"
@@ -21,5 +23,10 @@ function TaskFilterSelector(props) {
     </div>
   );
 }
+
+TaskFilterSelector.propTypes = {
+  setDoneFilter: PropTypes.func.isRequired,
+  doneFilter: PropTypes.string.isRequired,
+};
 
 export default TaskFilterSelector;
