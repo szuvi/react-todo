@@ -5,7 +5,7 @@ function TaskInput(props) {
   const [currTask, setCurrTask] = React.useState("");
 
   const textInput = React.useRef(null);
-  React.useEffect(() => textInput.current.focus(), [currTask]);
+  React.useEffect(() => textInput.current.focus(), []);
 
   function handleInputChange(e) {
     setCurrTask(e.target.value);
