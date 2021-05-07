@@ -1,19 +1,12 @@
 import * as React from 'react';
 
 function useLocalStorage(reducer, initialState, key) {
-  const init = (initState) => {
-    const valueFromLS = localStorage.getItem(key);
+  const valueFromLS = localStorage.getItem(key);
+  const initialized = valueFromLS
+    ? { ...initialState, [key]: JSON.parse(valueFromLS) }
+    : initialState;
 
-    if (valueFromLS) {
-      return {
-        ...initState,
-        [key]: JSON.parse(valueFromLS),
-      };
-    }
-    return initState;
-  };
-
-  const [state, dispatch] = React.useReducer(reducer, initialState, init);
+  const [state, dispatch] = React.useReducer(reducer, initialized);
 
   React.useEffect(() => {
     window.localStorage.setItem(key, JSON.stringify(state[key]));

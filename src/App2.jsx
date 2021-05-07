@@ -7,6 +7,7 @@ import Filters from './Containers/Filters';
 import TaskInput from './Containers/TaskInput';
 import TaskList from './Containers/TaskList';
 import useLocalStorage from './Hooks/useLocalStorage';
+import useFetch from './Hooks/useFetch';
 
 function taskListReducer(state, action) {
   switch (action.type) {
@@ -16,6 +17,14 @@ function taskListReducer(state, action) {
         [action.name]: action.value,
       };
     }
+
+    case 'loadTasks': {
+      return {
+        ...state,
+        taskList: action.value,
+      };
+    }
+
     case 'delete': {
       return {
         ...state,
@@ -28,6 +37,7 @@ function taskListReducer(state, action) {
         taskList: [...state.taskList, action.task],
       };
     }
+
     case 'toggleDone': {
       return {
         ...state,
@@ -61,6 +71,23 @@ function App() {
     initialState,
     'taskList'
   );
+
+  const myData = useFetch(
+    'https://jsonplaceholder.typicode.com/users/1/todos',
+    state.taskList
+  );
+
+  React.useMemo(() => {
+    const modifiedData = myData.map((task) => {
+      const { title, completed } = task;
+      if (title != null && completed != null) {
+        return new Task(title, completed);
+      }
+      return task;
+    });
+    dispatch({ type: 'loadTasks', value: modifiedData });
+    // setTasks(modifiedData);
+  }, [myData]);
 
   const addTask = (taskName) => {
     const newTask = new Task(taskName, false);
