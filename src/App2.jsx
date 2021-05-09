@@ -74,19 +74,20 @@ function App() {
 
   const myData = useFetch(
     'https://jsonplaceholder.typicode.com/users/1/todos',
-    state.taskList
+    state.taskList.length === 0
   );
 
   React.useMemo(() => {
-    const modifiedData = myData.map((task) => {
-      const { title, completed } = task;
-      if (title != null && completed != null) {
-        return new Task(title, completed);
-      }
-      return task;
-    });
-    dispatch({ type: 'loadTasks', value: modifiedData });
-    // setTasks(modifiedData);
+    if (myData.length > 0) {
+      const modifiedData = myData.map((task) => {
+        const { title, completed } = task;
+        if (title != null && completed != null) {
+          return new Task(title, completed);
+        }
+        return task;
+      });
+      dispatch({ type: 'loadTasks', value: modifiedData });
+    }
   }, [myData]);
 
   const addTask = (taskName) => {

@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-function useFetch(url, dependancy) {
+function useFetch(url, condition) {
   const [data, setData] = React.useState([]);
-  console.log(dependancy);
+
   React.useEffect(() => {
-    if (dependancy.length === 0) {
+    if (condition === true) {
       fetch(url)
         .then((res) => {
           if (!res.ok) {
@@ -16,10 +16,8 @@ function useFetch(url, dependancy) {
         .catch((e) => {
           throw new Error(e);
         });
-    } else {
-      setData(dependancy);
     }
-  }, [url]);
+  }, [url, condition]);
 
   return data;
 }

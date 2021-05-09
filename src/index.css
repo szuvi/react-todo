@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 /* ------------SIMPLE RESETS----------- */
 
 * {
@@ -40,7 +40,7 @@ html {
 }
 
 body {
-  font-family: 'Lato', 'Segoe UI', Tahoma, sans-serif;
+  font-family: "Lato", "Segoe UI", Tahoma, sans-serif;
 }
 
 /* ------------Utils-------------------------- */
@@ -101,6 +101,7 @@ body {
   grid-template-rows: repeat(3, auto);
   margin: 0 auto;
   padding-top: 1rem;
+  min-width: 350px;
   max-width: 500px;
   transition: all 1s;
   grid-gap: 1rem;
@@ -212,7 +213,7 @@ body {
   .task-list-name {
     max-width: 90%;
     max-height: 10vh;
-    overflow: scroll;
+    overflow: auto;
   }
   .task-filter-container {
     grid-template-columns: 1fr;
